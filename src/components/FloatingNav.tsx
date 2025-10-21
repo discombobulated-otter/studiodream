@@ -1,15 +1,13 @@
 import { motion } from "framer-motion";
-import { Grid3x3, Sparkles, SplitSquareHorizontal, Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Camera, Moon, Sun } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface FloatingNavProps {
-  onViewChange: (view: 'mosaic' | 'kaleidoscope' | 'split') => void;
-  currentView: 'mosaic' | 'kaleidoscope' | 'split';
   onHover: () => void;
   onLeave: () => void;
 }
 
-const FloatingNav = ({ onViewChange, currentView, onHover, onLeave }: FloatingNavProps) => {
+const FloatingNav = ({ onHover, onLeave }: FloatingNavProps) => {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
@@ -17,10 +15,16 @@ const FloatingNav = ({ onViewChange, currentView, onHover, onLeave }: FloatingNa
   }, [isDark]);
 
   const navItems = [
-    { id: 'mosaic' as const, icon: Grid3x3, label: 'Mosaic' },
-    { id: 'kaleidoscope' as const, icon: Sparkles, label: 'Kaleidoscope' },
-    { id: 'split' as const, icon: SplitSquareHorizontal, label: 'Split' },
+    { label: 'Portfolio', href: '#portfolio' },
+    { label: 'Services', href: '#services' },
+    { label: 'About', href: '#about' },
+    { label: 'Book', href: '#booking' },
   ];
+
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -35,48 +39,45 @@ const FloatingNav = ({ onViewChange, currentView, onHover, onLeave }: FloatingNa
         </h1>
       </motion.div>
 
-      {/* View Mode Navigation */}
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        className="fixed top-8 right-8 z-50 flex items-center gap-3"
+      {/* Navigation */}
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className="fixed top-8 left-1/2 -translate-x-1/2 z-50"
       >
-        <div className="flex gap-2 bg-card/80 backdrop-blur-md rounded-full p-2 border border-border">
-          {navItems.map((item, index) => (
+        <div className="bg-card/80 backdrop-blur-xl border border-border rounded-full px-6 py-3 shadow-elegant">
+          <div className="flex items-center gap-6">
+            <Camera className="text-accent" size={24} />
+            
+            {navItems.map((item) => (
+              <motion.button
+                key={item.label}
+                onClick={() => scrollToSection(item.href)}
+                onMouseEnter={onHover}
+                onMouseLeave={onLeave}
+                className="text-sm font-medium hover:text-accent transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {item.label}
+              </motion.button>
+            ))}
+
+            <div className="w-px h-6 bg-border" />
+
             <motion.button
-              key={item.id}
-              onClick={() => onViewChange(item.id)}
+              onClick={() => setIsDark(!isDark)}
               onMouseEnter={onHover}
               onMouseLeave={onLeave}
-              className={`relative p-3 rounded-full transition-all ${
-                currentView === item.id
-                  ? 'bg-accent text-accent-foreground'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
-              }`}
+              className="p-2 rounded-full hover:bg-accent/10 transition-all"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
             >
-              <item.icon className="w-5 h-5" />
-              <span className="sr-only">{item.label}</span>
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </motion.button>
-          ))}
+          </div>
         </div>
-
-        {/* Theme Toggle */}
-        <motion.button
-          onClick={() => setIsDark(!isDark)}
-          onMouseEnter={onHover}
-          onMouseLeave={onLeave}
-          className="p-3 rounded-full bg-card/80 backdrop-blur-md border border-border hover:bg-secondary transition-all"
-          whileHover={{ scale: 1.1, rotate: 180 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-        </motion.button>
-      </motion.div>
+      </motion.nav>
     </>
   );
 };
