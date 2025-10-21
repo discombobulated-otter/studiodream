@@ -6,6 +6,7 @@ import product1 from "@/assets/product-1.jpg";
 import landscape1 from "@/assets/landscape-1.jpg";
 import commercial1 from "@/assets/commercial-1.jpg";
 import abstract1 from "@/assets/abstract-1.jpg";
+import GalleryModal from "./GalleryModal";
 
 interface InteractiveGridProps {
   onHover: () => void;
@@ -23,6 +24,7 @@ const projects = [
 
 const InteractiveGrid = ({ onHover, onLeave }: InteractiveGridProps) => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen p-8 pt-32">
@@ -122,6 +124,7 @@ const InteractiveGrid = ({ onHover, onLeave }: InteractiveGridProps) => {
       >
         <p className="text-muted-foreground mb-6">Want to see more?</p>
         <motion.button
+          onClick={() => setIsModalOpen(true)}
           onMouseEnter={onHover}
           onMouseLeave={onLeave}
           className="px-8 py-4 bg-accent text-accent-foreground rounded-full font-sans font-medium hover:bg-accent/90 transition-colors"
@@ -131,6 +134,8 @@ const InteractiveGrid = ({ onHover, onLeave }: InteractiveGridProps) => {
           View Full Collection
         </motion.button>
       </motion.div>
+
+      <GalleryModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };

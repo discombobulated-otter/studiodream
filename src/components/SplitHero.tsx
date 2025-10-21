@@ -21,18 +21,17 @@ const SplitHero = ({ onHover, onLeave }: SplitHeroProps) => {
 
   return (
     <div 
-      className="min-h-screen relative overflow-hidden cursor-ew-resize"
-      onMouseMove={handleMouseMove}
+      className="min-h-screen relative overflow-hidden"
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
       {/* Left Side - About */}
       <motion.div
-        className="absolute inset-y-0 left-0 bg-background"
+        className="absolute inset-y-0 left-0 bg-background pointer-events-none"
         style={{ width: `${split}%` }}
         transition={{ type: "tween", duration: 0 }}
       >
-        <div className="relative h-full flex items-center justify-center overflow-hidden">
+        <div className="relative h-full flex items-center justify-center overflow-hidden pointer-events-auto">
           <img
             src={wedding1}
             alt="Wedding"
@@ -97,11 +96,11 @@ const SplitHero = ({ onHover, onLeave }: SplitHeroProps) => {
 
       {/* Right Side - Contact */}
       <motion.div
-        className="absolute inset-y-0 right-0 bg-card"
+        className="absolute inset-y-0 right-0 bg-card pointer-events-none"
         style={{ width: `${100 - split}%` }}
         transition={{ type: "tween", duration: 0 }}
       >
-        <div className="relative h-full flex items-center justify-center overflow-hidden">
+        <div className="relative h-full flex items-center justify-center overflow-hidden pointer-events-auto">
           <img
             src={portrait1}
             alt="Portrait"
@@ -181,11 +180,12 @@ const SplitHero = ({ onHover, onLeave }: SplitHeroProps) => {
 
       {/* Divider Line */}
       <motion.div
-        className="absolute inset-y-0 w-1 bg-accent shadow-2xl z-20"
+        className="absolute inset-y-0 w-1 bg-accent shadow-2xl z-20 cursor-ew-resize"
         style={{ left: `${split}%` }}
         transition={{ type: "tween", duration: 0 }}
+        onMouseMove={handleMouseMove}
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-xl">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-xl pointer-events-none">
           <div className="flex gap-1">
             <div className="w-1 h-4 bg-background rounded-full" />
             <div className="w-1 h-4 bg-background rounded-full" />
