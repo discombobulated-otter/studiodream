@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import wedding1 from "@/assets/wedding-1.jpg";
 import portrait1 from "@/assets/portrait-1.jpg";
-import product1 from "@/assets/product-1.jpg";
 import landscape1 from "@/assets/landscape-1.jpg";
 import commercial1 from "@/assets/commercial-1.jpg";
 import abstract1 from "@/assets/abstract-1.jpg";
@@ -13,12 +12,11 @@ interface PortfolioSectionProps {
   onLeave: () => void;
 }
 
-const categories = ['All', 'Wedding', 'Portrait', 'Commercial', 'Landscape', 'Product'];
+const categories = ['All', 'Wedding', 'Portrait', 'Commercial', 'Landscape'];
 
 const projects = [
   { id: 1, title: 'Eternal Moments', category: 'Wedding', image: wedding1, desc: 'Luxury wedding at Château de Versailles' },
   { id: 2, title: 'Urban Essence', category: 'Portrait', image: portrait1, desc: 'Editorial fashion portraits in NYC' },
-  { id: 3, title: 'Luxury Refined', category: 'Product', image: product1, desc: 'High-end jewelry product photography' },
   { id: 4, title: 'Majestic Horizons', category: 'Landscape', image: landscape1, desc: 'Fine art landscape series' },
   { id: 5, title: 'Corporate Vision', category: 'Commercial', image: commercial1, desc: 'Brand campaign for tech startup' },
   { id: 6, title: 'Flowing Dreams', category: 'Abstract', image: abstract1, desc: 'Abstract art photography collection' },

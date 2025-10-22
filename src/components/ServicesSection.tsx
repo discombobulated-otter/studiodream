@@ -11,21 +11,18 @@ const services = [
     icon: Heart,
     title: 'Wedding Photography',
     description: 'Full-day coverage capturing every precious moment of your special day',
-    price: 'From $3,500',
     features: ['8-10 hours coverage', '500+ edited photos', 'Online gallery', 'Engagement session']
   },
   {
     icon: User,
     title: 'Portrait Sessions',
     description: 'Professional portraits for individuals, couples, and families',
-    price: 'From $450',
     features: ['1-2 hour session', '30+ edited photos', 'Location of choice', 'Styling consultation']
   },
   {
     icon: Briefcase,
     title: 'Commercial Work',
     description: 'Brand campaigns, product photography, and corporate headshots',
-    price: 'Custom Quote',
     features: ['Brand strategy', 'Unlimited revisions', 'Usage rights', 'Full production']
   },
 ];
@@ -67,7 +64,6 @@ const ServicesSection = ({ onHover, onLeave }: ServicesSectionProps) => {
                 </div>
                 <h3 className="text-2xl font-serif font-bold mb-3">{service.title}</h3>
                 <p className="text-muted-foreground mb-4">{service.description}</p>
-                <p className="text-accent font-bold text-xl">{service.price}</p>
               </div>
 
               <ul className="space-y-3">

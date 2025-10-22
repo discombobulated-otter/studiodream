@@ -17,8 +17,9 @@ const FloatingNav = ({ onHover, onLeave }: FloatingNavProps) => {
   const navItems = [
     { label: 'Portfolio', href: '#portfolio' },
     { label: 'Services', href: '#services' },
+    { label: 'Prints', href: '#prints' },
     { label: 'About', href: '#about' },
-    { label: 'Book', href: '#booking' },
+    { label: 'Contact', href: '#booking' },
   ];
 
   const scrollToSection = (href: string) => {
