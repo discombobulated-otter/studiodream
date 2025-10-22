@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { Phone, Mail, MessageCircle, Instagram } from "lucide-react";
 
 interface BookingSectionProps {
   onHover: () => void;
@@ -31,9 +32,16 @@ const BookingSection = ({ onHover, onLeave }: BookingSectionProps) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const contactMethods = [
+    { icon: Phone, label: "Call Us", value: "+1 (555) 123-4567", href: "tel:+15551234567" },
+    { icon: Mail, label: "Email", value: "hello@studio.com", href: "mailto:hello@studio.com" },
+    { icon: MessageCircle, label: "WhatsApp", value: "Message Us", href: "https://wa.me/15551234567" },
+    { icon: Instagram, label: "Instagram", value: "@photostudio", href: "https://instagram.com/photostudio" },
+  ];
+
   return (
     <section id="booking" className="py-32 px-8 bg-background">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -41,12 +49,47 @@ const BookingSection = ({ onHover, onLeave }: BookingSectionProps) => {
           className="mb-16 text-center"
         >
           <h2 className="text-6xl md:text-7xl font-serif font-bold mb-6">
-            Book Your <span className="italic text-accent">Session</span>
+            Get In <span className="italic text-accent">Touch</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Ready to create something amazing? Fill out the form below and let's start planning your perfect shoot.
+            Ready to create something amazing? Reach out directly or fill out the form below.
           </p>
         </motion.div>
+
+        {/* Contact Methods Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+        >
+          {contactMethods.map((method, index) => (
+            <motion.a
+              key={method.label}
+              href={method.href}
+              target={method.href.startsWith('http') ? '_blank' : undefined}
+              rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              onMouseEnter={onHover}
+              onMouseLeave={onLeave}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="bg-card border border-border rounded-2xl p-6 text-center hover:border-accent transition-all group"
+            >
+              <method.icon className="w-8 h-8 mx-auto mb-4 text-accent group-hover:scale-110 transition-transform" />
+              <h3 className="font-semibold mb-2">{method.label}</h3>
+              <p className="text-sm text-muted-foreground">{method.value}</p>
+            </motion.a>
+          ))}
+        </motion.div>
+
+        {/* Booking Form */}
+        <div className="text-center mb-8">
+          <h3 className="text-2xl font-serif font-semibold mb-2">Or Book a Session</h3>
+          <p className="text-muted-foreground">Fill out the form and we'll get back to you within 24 hours</p>
+        </div>
 
         <motion.form
           initial={{ opacity: 0, y: 30 }}
