@@ -59,8 +59,8 @@ const ServicesSection = ({ onHover, onLeave }: ServicesSectionProps) => {
               whileHover={{ y: -8 }}
             >
               <div className="mb-6">
-                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                  <service.icon className="text-accent" size={28} />
+                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-[hsl(var(--highlight))]/20 transition-colors">
+                  <service.icon className="text-[hsl(var(--highlight))] group-hover:text-[hsl(var(--highlight))]" size={28} />
                 </div>
                 <h3 className="text-2xl font-serif font-bold mb-3">{service.title}</h3>
                 <p className="text-muted-foreground mb-4">{service.description}</p>
@@ -69,7 +69,7 @@ const ServicesSection = ({ onHover, onLeave }: ServicesSectionProps) => {
               <ul className="space-y-3">
                 {service.features.map((feature) => (
                   <li key={feature} className="flex items-center text-sm text-muted-foreground">
-                    <Sparkles className="mr-2 text-accent" size={16} />
+                    <Sparkles className="mr-2 text-[hsl(var(--highlight))]" size={16} />
                     {feature}
                   </li>
                 ))}
