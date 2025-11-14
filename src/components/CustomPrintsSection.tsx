@@ -65,8 +65,8 @@ const CustomPrintsSection = ({ onHover, onLeave }: CustomPrintsSectionProps) => 
               whileHover={{ y: -8 }}
             >
               <div className="mb-6">
-                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                  <product.icon className="text-accent" size={28} />
+                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-[hsl(var(--highlight))]/20 transition-colors">
+                  <product.icon className="text-[hsl(var(--highlight))] group-hover:text-[hsl(var(--highlight))]" size={28} />
                 </div>
                 <h3 className="text-2xl font-serif font-bold mb-3">{product.title}</h3>
                 <p className="text-muted-foreground mb-4">{product.description}</p>
@@ -75,7 +75,7 @@ const CustomPrintsSection = ({ onHover, onLeave }: CustomPrintsSectionProps) => 
               <ul className="space-y-3 mb-8">
                 {product.features.map((feature) => (
                   <li key={feature} className="flex items-start text-sm text-muted-foreground">
-                    <span className="mr-2 text-accent mt-0.5">✓</span>
+                    <span className="mr-2 text-[hsl(var(--highlight))] mt-0.5">✓</span>
                     {feature}
                   </li>
                 ))}

@@ -52,7 +52,7 @@ const TestimonialsSection = () => {
             >
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="fill-accent text-accent" size={18} />
+                  <Star key={i} className="fill-[hsl(var(--highlight))] text-[hsl(var(--highlight))]" size={18} />
                 ))}
               </div>
               

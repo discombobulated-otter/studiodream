@@ -38,10 +38,13 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
     
-    --gold: 0 0% 0%;
-    --gold-light: 0 0% 20%;
+    --gold: 43 96% 56%;
+    --gold-light: 43 96% 70%;
     --cream: 0 0% 100%;
     --cream-dark: 0 0% 95%;
+    
+    --highlight: 43 96% 56%;
+    --highlight-glow: 43 96% 70%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 0%;
@@ -82,10 +85,13 @@ All colors MUST be HSL.
     --input: 0 0% 20%;
     --ring: 0 0% 100%;
     
-    --gold: 0 0% 100%;
-    --gold-light: 0 0% 80%;
+    --gold: 43 96% 56%;
+    --gold-light: 43 96% 70%;
     --cream: 0 0% 0%;
     --cream-dark: 0 0% 10%;
+    
+    --highlight: 43 96% 56%;
+    --highlight-glow: 43 96% 70%;
     --sidebar-background: 0 0% 5%;
     --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 0 0% 100%;
