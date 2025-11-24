@@ -44,19 +44,6 @@ src/
 * Optimized rendering for image‑heavy components
 
 ---
-
-## Live Demo
-
-*Add link here after deployment*
-
----
-
-## Source Code
-
-[https://github.com/discombobulated-otter/studiodream](https://github.com/discombobulated-otter/studio-dream)
-
----
-
 ## License
 
 MIT
